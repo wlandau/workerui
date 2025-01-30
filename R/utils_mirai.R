@@ -1,6 +1,14 @@
 mirai_status <- function(profile, seconds_interval, seconds_timeout) {
+
+  text <- paste(format(Sys.time(), format = "%H:%M:%OS2"), "BEGIN dispatcher query loop")
+  message(text)
+  
   envir <- new.env(parent = emptyenv())
   iterate <- function() {
+    
+     text <- paste(" ", format(Sys.time(), format = "%H:%M:%OS2"), "querying dispatcher")
+     message(text)
+    
     status <- mirai::status(.compute = profile)
     valid <- is.list(status)
     retry <- is.numeric(status) && identical(as.integer(status), 5L)
@@ -11,6 +19,13 @@ mirai_status <- function(profile, seconds_interval, seconds_timeout) {
     )
     envir$status <- status
     envir$valid <- valid
+    
+    if (valid) {
+      message("    query succeeded")
+    } else {
+      message("    query failed with status 5")
+    }
+    
     valid
   }
   crew_retry(
@@ -20,6 +35,10 @@ mirai_status <- function(profile, seconds_interval, seconds_timeout) {
     error = FALSE,
     assertions = FALSE
   )
+  
+    text <- paste(format(Sys.time(), format = "%H:%M:%OS2"), "END dispatcher query loop")
+  message(text)
+  
   status <- .subset2(envir, "status")
   valid <- .subset2(envir, "valid")
   if_any(valid, status, mirai_status_error(status, profile))
