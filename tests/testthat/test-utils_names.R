@@ -16,3 +16,11 @@ crew_test("eval_tidyselect()", {
   out <- eval_tidyselect(expr = rlang::new_quosure(NULL), choices = "x")
   expect_equal(out, character(0L))
 })
+
+crew_test("name_task_tempfile()", {
+  expect_true(is.character(name_task_tempfile()))
+})
+
+crew_test("name_task_nanonext()", {
+  expect_true(is.character(name_task_nanonext()))
+})

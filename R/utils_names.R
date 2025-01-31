@@ -2,6 +2,14 @@ name_worker <- function(launcher, worker) {
   paste("crew", launcher, worker, sep = "-")
 }
 
+name_task_tempfile <- function() {
+  basename(tempfile(pattern = "unnamed_task_"))
+}
+
+name_task_nanonext <- function() {
+  paste0("unnamed_task_", nanonext::random(n = 32L))
+}
+
 is_named <- function(x) {
   if (!is.list(x) || length(x) < 1L) {
     return(TRUE)

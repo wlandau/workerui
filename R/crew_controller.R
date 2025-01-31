@@ -611,10 +611,15 @@ crew_class_controller <- R6::R6Class(
       } else {
         .timeout <- seconds_timeout * 1000
       }
-      if (is.null(name)) {
-        name <- basename(tempfile(pattern = "unnamed_task_"))
-      }
       tasks <- .subset2(private, ".tasks")
+      if (is.null(name)) {
+        name <- name_task_tempfile()
+        name <- if_any(
+          is.null(.subset2(tasks, name)),
+          name,
+          name_task_nanonext()
+        )
+      }
       if (!is.null(.subset2(tasks, name))) {
         crew_error(
           message = paste(
