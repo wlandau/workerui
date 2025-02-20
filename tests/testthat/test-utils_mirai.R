@@ -19,14 +19,14 @@ crew_test("mirai_resolved()", {
   skip_on_os("windows")
   expect_true(mirai_resolved(TRUE))
   task <- mirai::mirai(TRUE)
-  mirai::call_mirai_(task)
+  mirai::call_mirai(task)
   expect_true(mirai_resolved(task))
   ask <- mirai::mirai(stop("abc"))
-  mirai::call_mirai_(task)
+  mirai::call_mirai(task)
   expect_true(mirai_resolved(task))
   task <- mirai::mirai(Sys.sleep(1))
   expect_false(mirai_resolved(task))
-  mirai::call_mirai_(task)
+  mirai::call_mirai(task)
 })
 
 crew_test("mirai_resolve()", {
@@ -72,10 +72,10 @@ crew_test("mirai_assert()", {
   skip_on_os("windows")
   expect_silent(mirai_assert(task = "task", launching = TRUE))
   task <- mirai::mirai(TRUE)
-  mirai::call_mirai_(task)
+  mirai::call_mirai(task)
   expect_silent(mirai_assert(task, launching = TRUE))
   task <- mirai::mirai(stop("message"))
-  mirai::call_mirai_(task)
+  mirai::call_mirai(task)
   expect_crew_error(mirai_assert(task, launching = TRUE))
   expect_warning(
     mirai_assert(task, launching = FALSE),

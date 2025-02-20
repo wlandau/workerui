@@ -17,7 +17,7 @@ launcher <- crew_launcher_local(name = client$name)
 launcher$start(url = client$url, profile = client$profile)
 launcher$launch()
 task <- mirai::mirai("result", .compute = client$profile)
-mirai::call_mirai_(task)
+mirai::call_mirai(task)
 task$data
 client$terminate()
 }
@@ -33,7 +33,7 @@ launcher <- crew_launcher_local(name = client$name)
 launcher$start(url = client$url, profile = client$profile)
 launcher$launch()
 task <- mirai::mirai("result", .compute = client$profile)
-mirai::call_mirai_(task)
+mirai::call_mirai(task)
 task$data
 client$terminate()
 }
@@ -168,7 +168,7 @@ launcher <- crew_launcher_local(name = client$name)
 launcher$start(url = client$url, profile = client$profile)
 launcher$launch()
 task <- mirai::mirai("result", .compute = client$profile)
-mirai::call_mirai_(task)
+mirai::call_mirai(task)
 task$data
 client$terminate()
 }

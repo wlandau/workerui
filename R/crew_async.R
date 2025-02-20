@@ -14,7 +14,7 @@
 #' x <- crew_async()
 #' x$start()
 #' out <- x$eval(1 + 1)
-#' mirai::call_mirai_(out)
+#' mirai::call_mirai(out)
 #' out$data # 2
 #' x$terminate()
 #' }

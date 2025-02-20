@@ -91,7 +91,7 @@ mirai_resolved <- function(task) {
 
 mirai_resolve <- function(task, launching) {
   if (mirai::is_mirai(task)) {
-    mirai::call_mirai_(task)
+    mirai::call_mirai(task)
     mirai_assert(task, launching)
     task$data
   } else {
@@ -100,7 +100,7 @@ mirai_resolve <- function(task, launching) {
 }
 
 mirai_wait <- function(tasks, launching) {
-  mirai::call_mirai_(tasks)
+  mirai::call_mirai(tasks)
   lapply(tasks, mirai_assert, launching = launching)
   invisible()
 }

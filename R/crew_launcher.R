@@ -85,7 +85,7 @@
 #' launcher$start(url = client$url, profile = client$profile)
 #' launcher$launch()
 #' task <- mirai::mirai("result", .compute = client$profile)
-#' mirai::call_mirai_(task)
+#' mirai::call_mirai(task)
 #' task$data
 #' client$terminate()
 #' }
@@ -182,7 +182,7 @@ launcher_empty_instances <- tibble::tibble(
 #' launcher$start(url = client$url, profile = client$profile)
 #' launcher$launch()
 #' task <- mirai::mirai("result", .compute = client$profile)
-#' mirai::call_mirai_(task)
+#' mirai::call_mirai(task)
 #' task$data
 #' client$terminate()
 #' }
@@ -342,7 +342,7 @@ crew_class_launcher <- R6::R6Class(
     #' launcher$start(url = client$url, profile = client$profile)
     #' launcher$launch()
     #' task <- mirai::mirai("result", .compute = client$profile)
-    #' mirai::call_mirai_(task)
+    #' mirai::call_mirai(task)
     #' task$data
     #' client$terminate()
     #' }

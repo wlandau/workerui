@@ -21,7 +21,7 @@ crew_test("as_monad()", {
   expect_equal(as_monad(task = task, name = "x", controller = "y"), list(2L))
   mirai::daemons(n = 1L, autoexit = crew_terminate_signal())
   task <- mirai::mirai(stop("error_message"))
-  mirai::call_mirai_(task)
+  mirai::call_mirai(task)
   monad <- as_monad(task = task, name = "x", controller = "y")
   expect_equal(monad$name, "x")
   expect_equal(monad$result, list(NA))
